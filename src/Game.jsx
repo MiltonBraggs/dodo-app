@@ -55,7 +55,8 @@ export default function Game() {
 
   // 🎵 Background Music
   useEffect(() => {
-    const audio = new Audio("/bg-music.mp3");
+    const audio = new Audio(`${import.meta.env.BASE_URL}bg-music.mp3`);
+
     audio.loop = true;
     audio.volume = 0.5;
     audioRef.current = audio;
@@ -94,7 +95,6 @@ export default function Game() {
     setAllMatched(false);
   }, [theme]);
 
-  
   useEffect(() => {
     if (gameOver) return;
 
@@ -111,7 +111,6 @@ export default function Game() {
 
     return () => clearInterval(countdown);
   }, [gameOver]);
-
 
   useEffect(() => {
     if (flipped.length === 2) {
@@ -211,7 +210,8 @@ export default function Game() {
 
       {gameOver && (
         <div className="text-xl font-semibold text-green-600 mb-4 animate-pulse text-center">
-          Yaaaaay!! {allMatched ? "You matched all the cards!" : "Time's up!"} <br />
+          Yaaaaay!! {allMatched ? "You matched all the cards!" : "Time's up!"}{" "}
+          <br />
           You scored <span className="font-bold">{points}</span> point
           {points !== 1 ? "s" : ""}.
         </div>

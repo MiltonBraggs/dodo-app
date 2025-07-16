@@ -1,21 +1,19 @@
-import React from "react";
+const base = import.meta.env.BASE_URL;
 
 export default function Card({ value, flipped, onClick }) {
   return (
     <div
       onClick={onClick}
-      className={`w-20 h-20 md:w-28 md:h-28 border-2 rounded-lg shadow-md cursor-pointer transition-transform duration-300 flex items-center justify-center overflow-hidden ${
-        flipped ? "bg-white" : "bg-pink-400"
-      }`}
+      className="w-20 h-20 bg-white border rounded flex items-center justify-center cursor-pointer"
     >
       {flipped ? (
         <img
-          src={`/images/${value}`}
+          src={`${base}images/${value}`}
           alt="card"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-contain"
         />
       ) : (
-        <span className="text-2xl">❓</span>
+        <div className="w-full h-full bg-pink-200 rounded" />
       )}
     </div>
   );

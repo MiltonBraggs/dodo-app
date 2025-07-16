@@ -65,13 +65,14 @@ function ThemeSelect() {
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/themes" element={<ThemeSelect />} />
-        <Route path="/game" element={<Game />} />
-      </Routes>
-    </Router>
+    <Router basename="/dodo-app">
+  <Routes>
+    <Route path="/" element={<Home />} />
+    <Route path="/themes" element={<ThemeSelect />} />
+    <Route path="/game" element={<Game />} />
+  </Routes>
+</Router>
+
   );
 }
 
