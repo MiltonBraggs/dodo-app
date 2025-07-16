@@ -53,7 +53,14 @@ export default function Game() {
   const [isMuted, setIsMuted] = useState(false);
   const [allMatched, setAllMatched] = useState(false);
 
-  // 🎵 Background Music
+  useEffect(() => {
+  Object.values(themeCards).flat().forEach((img) => {
+    const preloadImg = new Image();
+    preloadImg.src = `${import.meta.env.BASE_URL}images/${img}`;
+  });
+}, []);
+
+  // Background Music
   useEffect(() => {
     const audio = new Audio(`${import.meta.env.BASE_URL}bg-music.mp3`);
 
