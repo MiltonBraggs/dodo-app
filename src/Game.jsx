@@ -54,13 +54,22 @@ export default function Game() {
   const [allMatched, setAllMatched] = useState(false);
 
   useEffect(() => {
+  const imageElements = [];
+
   Object.values(themeCards).flat().forEach((img) => {
     const preloadImg = new Image();
     preloadImg.src = `${import.meta.env.BASE_URL}images/${img}`;
+    preloadImg.style.display = "none"; 
+    document.body.appendChild(preloadImg);
+    imageElements.push(preloadImg);
   });
+
+  return () => {
+    imageElements.forEach((img) => img.remove()); 
+  };
 }, []);
 
-  // Background Music
+
   useEffect(() => {
     const audio = new Audio(`${import.meta.env.BASE_URL}bg-music.mp3`);
 
