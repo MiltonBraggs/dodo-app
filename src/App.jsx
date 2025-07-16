@@ -6,6 +6,8 @@ import {
 } from "react-router-dom";
 import Slider from "./Slider.jsx";
 import Game from "./Game.jsx";
+import SplashScreen from "./SplashScreen.jsx";
+import { useState, useEffect } from "react";
 
 function Home() {
   const navigate = useNavigate();
@@ -23,10 +25,27 @@ function Home() {
   );
 }
 
+function GameWithSplash() {
+  const [showSplash, setShowSplash] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowSplash(false);
+    }, 750);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  return showSplash ? <SplashScreen /> : <Game />;
+}
+
 function ThemeSelect() {
   const navigate = useNavigate();
 
   const startGameWithTheme = (theme) => {
+    
+
+
     navigate(`/game?theme=${theme}`);
   };
 
@@ -64,15 +83,23 @@ function ThemeSelect() {
 }
 
 function App() {
+  const [showSplash, setShowSplash] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setShowSplash(false), 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (showSplash) return <SplashScreen />;
+
   return (
     <Router basename="/dodo-app">
-  <Routes>
-    <Route path="/" element={<Home />} />
-    <Route path="/themes" element={<ThemeSelect />} />
-    <Route path="/game" element={<Game />} />
-  </Routes>
-</Router>
-
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/themes" element={<ThemeSelect />} />
+        <Route path="/game" element={<GameWithSplash />} />
+      </Routes>
+    </Router>
   );
 }
 
