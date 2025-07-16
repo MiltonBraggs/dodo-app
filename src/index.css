@@ -1,1 +1,7 @@
-@import "tailwindcss"
+@import "tailwindcss";
+
+.press-start-2p-regular {
+  font-family: "Press Start 2P", system-ui;
+  font-weight: 50;
+  font-style: normal;
+}

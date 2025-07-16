@@ -7,6 +7,7 @@ import {
 import Slider from "./Slider.jsx";
 import Game from "./Game.jsx";
 import SplashScreen from "./SplashScreen.jsx";
+import SplashScreenVideo from "./SplashScreenVideo.jsx";
 import { useState, useEffect } from "react";
 
 function Home() {
@@ -16,7 +17,7 @@ function Home() {
       <Slider>
         <button
           onClick={() => navigate("/themes")}
-          className="px-6 py-3 bg-pink-500 text-white text-lg rounded hover:bg-pink-600 transition"
+          className="px-6 py-3 bg-pink-500 text-white text-lg rounded hover:bg-pink-600 transition font-bold"
         >
           Game Time 🎮
         </button>
@@ -43,14 +44,11 @@ function ThemeSelect() {
   const navigate = useNavigate();
 
   const startGameWithTheme = (theme) => {
-    
-
-
     navigate(`/game?theme=${theme}`);
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-200 p-4 press-start-2p-regular">
       <h1 className="text-2xl font-bold mb-6 text-pink-600">Choose a Theme</h1>
       <div className="flex gap-4 flex-wrap justify-center">
         <button
@@ -85,12 +83,12 @@ function ThemeSelect() {
 function App() {
   const [showSplash, setShowSplash] = useState(true);
 
-  useEffect(() => {
+ /* useEffect(() => {
     const timer = setTimeout(() => setShowSplash(false), 2000);
     return () => clearTimeout(timer);
-  }, []);
+  }, []);*/
 
-  if (showSplash) return <SplashScreen />;
+  if (showSplash) return <SplashScreenVideo onEnd={() => setShowSplash(false)} />;
 
   return (
     <Router basename="/dodo-app">

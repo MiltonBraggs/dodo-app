@@ -74,7 +74,7 @@ export default function Game() {
     const audio = new Audio(`${import.meta.env.BASE_URL}bg-music.mp3`);
 
     audio.loop = true;
-    audio.volume = 0.5;
+    audio.volume = 1;
     audioRef.current = audio;
 
     audio.play().catch((err) => console.log("Autoplay blocked", err));
@@ -194,11 +194,11 @@ export default function Game() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-4">
-      <h1 className="text-3xl font-bold mb-2">🧠 Memory Game</h1>
-      <h2 className="text-lg text-gray-600 mb-2 capitalize">Theme: {theme}</h2>
-      <p className="text-lg mb-1">Time Left: {timer}s</p>
-      <p className="text-lg mb-4">Points: {points}</p>
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-4 font-bold ">
+      <h1 className="text-4xl font-bold mb-2 ">🧠 Memory Game</h1>
+      <h2 className="text-lg text-gray-600 mb-2 capitalize press-start-2p-regular">Theme: {theme}</h2>
+      <p className="text-xs mb-1 press-start-2p-regular">Time Left: {timer}s</p>
+      <p className="mb-4 press-start-2p-regular text-xs">Points: {points}</p>
 
       <button
         onClick={toggleMute}
